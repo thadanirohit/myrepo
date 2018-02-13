@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+       
+<tiles-definitions>
+
+	<definition name="baseLayout" id="baseLayout" template="/WEB-INF/layout/baseLayout.jsp" >
+		<put-attribute name="header" value="/WEB-INF/layout/header.jsp"></put-attribute>
+		<put-attribute name="menu" value="/WEB-INF/layout/menu.jsp"></put-attribute>
+		<put-attribute name="body" value="${body}"></put-attribute>
+		<put-attribute name="footer" value="/WEB-INF/layout/footer.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="login" id="login" extends="baseLayout" >
+		<put-attribute name="body" value="/WEB-INF/jsps/login.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="register" id="register" extends="baseLayout" >
+		<put-attribute name="body" value="/WEB-INF/jsps/register.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="projects" id="projects" extends="baseLayout" >
+		<put-attribute name="body" value="/WEB-INF/jsps/project_section.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="ajaxDelProject" template="/WEB-INF/jsps/ajax_del_project.jsp" ></definition>
+	
+	<definition name="getandpost" template="/WEB-INF/jsps/getnpost.jsp" ></definition>
+	
+	<definition name="jsontest" template="/WEB-INF/jsps/jsontest.jsp" ></definition>
+	
+	
+	
+	
+	
+
+</tiles-definitions>

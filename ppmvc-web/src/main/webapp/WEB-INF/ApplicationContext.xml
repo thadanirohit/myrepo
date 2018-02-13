@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN"
+        "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+
+<beans>
+
+	<bean id="dataSource"
+        class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver" />
+        <property name="url" value="jdbc:mysql://localhost/spring_orm_maven?useUnicode=yes&amp;characterEncoding=utf8" />
+        <property name="username" value="root" />
+        <property name="password" value="" />        
+
+    </bean>
+    
+    <!-- <bean id="mysessionFactory"  class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean"> -->
+    <bean id="mysessionFactory"  class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">  
+    
+        <property name="dataSource" ref="dataSource"></property>  
+          
+        <!-- <property name="mappingResources">  
+        <list>  
+        <value>Student.hbm.xml</value>  
+        </list>  
+        </property> -->
+        
+        <!-- <property name="annotatedClasses">
+			<list>
+				<value>com.artek.model.user</value>
+			</list>
+	    </property> -->
+	    
+	    <property name="packagesToScan">
+	    	<list>
+	    		<value>com.artek.model</value>
+	    	</list>
+	    </property>                 
+          
+        <property name="hibernateProperties">  
+            <props>  
+                <prop key="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</prop>  
+                <prop key="hibernate.hbm2ddl.auto">update</prop>  
+                <prop key="hibernate.show_sql">true</prop>                  
+            </props>  
+        </property>  
+    </bean>  
+      
+    <bean id="template" class="org.springframework.orm.hibernate5.HibernateTemplate">  
+    	<property name="sessionFactory" ref="mysessionFactory"></property>
+    	<property name="checkWriteOperations" value="false"></property>  
+    </bean>
+
+</beans>
